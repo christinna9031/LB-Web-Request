@@ -1,2 +1,2 @@
 # LB Web Request
- Simple Web Request extension for LioranBoard. 
+ Simple Web Request extension for LioranBoard.
