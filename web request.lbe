@@ -12,47 +12,50 @@ case "WebRequest":{
 	LBWebRequest(LioranBoardJSON.variable,LioranBoardJSON.url,LioranBoardJSON.save_in_variable,LioranBoardJSON.method,LioranBoardJSON.proxy)
 }break
 [insert_script]
-async function LBWebRequest(variable,url,save,method,proxy){
+async function LBWebRequest(variable, url, save, method, proxy) {
 
-	async function fetchURL (){
-		if (proxy=="yes"){
-    url="https://cors-anywhere.herokuapp.com/"+url
-	}
- const response = await fetch (url, {
-	  "method": method,
-	  'Accept': 'application/json'
-}
-  )
-  
-  let content = await response.text()
-  if (!response.ok){
-	try {
-		content = JSON.parse(content)}
-	catch (e){}
+  async function fetchURL() {
+    if (proxy == "yes") {
+      url = "https://cors-anywhere.herokuapp.com/" + url
+    }
+    const response = await fetch(url, {
+      "method": method,
+      'Accept': 'application/json'
+    })
+
+    let content = await response.text()
+    if (!response.ok) {
+      try {
+        content = JSON.parse(content)
+      } catch (e) {}
       let error = content.message || content.error || "Something went wrong."
       throw new Error(error)
     } else {
-		try {
-		content = JSON.parse(content)}
-	catch (e){}
-	  }
-  return content;	
-}
+      try {
+        content = JSON.parse(content)
+      } catch (e) {}
+    }
+    return content;
+  }
 
-await fetchURL ()
-  .then (data => {
-	lioranboardclient.send('{"type":"MESSAGE","topic":"AlertMessage","message":"Web request successful!"}')
-	if (save=="yes"){
-          lioranboardclient.send('{"type":"MESSAGE","topic":"SetValue","valuename":"' + variable + '","value":"' + ReplaceSymbols(data) + '","real":false}')}})
-  .catch (e =>{
-  lioranboardclient.send('{"type":"MESSAGE","topic":"AlertMessage","message":"Web request failed! '+ReplaceSymbols(e)+'"}')})
+  await fetchURL()
+    .then(data => {
+      lioranboardclient.send('{"type":"MESSAGE","topic":"AlertMessage","message":"Web request successful!"}')
+      if (save == "yes") {
+        lioranboardclient.send('{"type":"MESSAGE","topic":"SetValue","valuename":"' + variable + '","value":"' + ReplaceSymbols(data) + '","real":false}')
+      }
+    })
+    .catch(e => {
+      lioranboardclient.send('{"type":"MESSAGE","topic":"AlertMessage","message":"Web request failed! ' + ReplaceSymbols(e) + '"}')
+    })
 
   function ReplaceSymbols(tw) {
-	tw = JSON.stringify(tw)
-	tw = tw.replace(/(?:\r\n|\r|\n)/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-	tw = tw.replace(/"/g, "'").replace(/\//g, '/').replace(/\\/g, "\\\\")
+    tw = JSON.stringify(tw)
+    tw = tw.replace(/(?:\r\n|\r|\n)/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+    tw = tw.replace(/"/g, "'").replace(/\//g, '/').replace(/\\/g, "\\\\")
     return tw
-  }}
+  }
+}
 [insert_over]
 [buttons_0x0]
 activepress="0.000000"
