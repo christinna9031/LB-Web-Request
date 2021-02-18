@@ -3,7 +3,7 @@ A simple LioranBoard extension for web requests.
 You can choose type, whether to save the response in a variable and whether to enable proxy (for any cors errors).   
 As of now it cannot pass custom headers or parameters except for query string.   
 Might be useful for triggering actions without actually having to open the url in your browser or retrieving data from some public APIs.     
-MrWaldo's update: An expression field that can be used to specify an JSON Path expression. In case of a single match a variable is set and in case of multiple matches a stack is created.
+MrWaldo's update: An expression field that can be used to specify an JSON Path expression. In case of a single match a variable is set and in case of multiple matches a stack is created.         
 The premade button shows how to retrieve the most recent tweet from NYTimes.
 
 
