@@ -23,7 +23,7 @@ async function LBWebRequest(variable, url, save, method, proxy, expression) {
 
   async function fetchURL() {
     if (proxy == "yes") {
-      url = "https://cors-anywhere.herokuapp.com/" + url
+      url = "https://cors.bridged.cc/" + url
     }
     const response = await fetch(url, {
       "method": method,
