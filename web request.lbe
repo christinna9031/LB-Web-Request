@@ -2,7 +2,7 @@
 Web Request
 [insert_external]
 <div>
-  <p>Web request V2 is installed.</p>
+  <p>Web request V3 is installed.</p>
   <code>
     JSONPath 0.8.0 - XPath for JSON
     Copyright (c) 2007 Stefan Goessner (goessner.net)
@@ -10,7 +10,7 @@ Web Request
   </code>
 </div>
 <!--
- * @name:Web Request, @version: 2.0, @author: Christinna#9031 & MrWaldo#8091
+ * @name:Web Request, @version: 3.0, @author: Christinna#9031 & MrWaldo#8091
  * -->
 [insert_command]
 lioranboardclient.send('{"type":"MESSAGE","topic":"ExtensionCommand","name":"Web Request","boxcount":6,"boxname1":"variable","boxtype1":"string","boxname2":"save_in_variable|yes|no|","boxtype2":"string","boxname3":"method|GET|POST|PUT|DELETE|","boxtype3":"string","boxname4":"proxy|yes|no|","boxtype4":"string","boxname5":"url","boxtype5":"string", "boxname6":"expression","boxtype6":"string"}');
